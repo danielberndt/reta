@@ -1,0 +1,9 @@
+{
+  "name": "retachyons",
+  "version": "1.0.0",
+  "description": "Type less, style more",
+  "main": "index.js",
+  "repository": "codecks-io/retachyons",
+  "author": "Daniel Berndt",
+  "license": "ISC"
+}
