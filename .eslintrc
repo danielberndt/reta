@@ -1,0 +1,13 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": ["warn", "never"],
+    "quotes": ["warn", "single"],
+    "no-cond-assign": ["error", "except-parens"],
+    "import/no-webpack-loader-syntax": 0
+  },
+  "globals": {
+    "__DEV__": true,
+    "__SERVERRENDER__": true
+  }
+}
