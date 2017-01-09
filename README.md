@@ -22,11 +22,12 @@ Let's learn from the atomic css movement. [tachyons]((http://tachyons.io/) is a 
 
 - media queries via customisable suffixes: `<B pa3 pa5Md/>`
 - hover, active, focus states via prefixes: `<B blue hoverDarkBlue/>`
-- full power of [glamor](https://github.com/threepointone/glamor/blob/master/docs/jsxstyle.md) for all kinds of fallbacks: `<B w50 style={{opacity: value}} select={[' svg': {height: 12}]}/>`
+- full power of [glamor](https://github.com/threepointone/glamor/blob/master/docs/jsxstyle.md) for all kinds of fallbacks: `<B w50 opacity={value} select={[' svg': {height: 12}]}/>`
 - support for [server side rendering](https://github.com/threepointone/glamor/blob/master/docs/server.md)
 - 4 Basic building blocks: `B`: block, `B.Col`: flexDirection column, `B.Row` flexDirection column, `B.I`: inline-block
-  (set your custom display prop via `<B display="inline"/>`)
+  (set your custom display prop via e.g. `<B display="inline"/>`)
 - Overwritable defaults for colors, scales, etc
+- Support for camelCase and kebabCase: `<B bg-dark-green/>` and `<B bgDarkGreen/>`
 - Potential for very nice performance due to fixed set of atomic-rules
 
 ## Getting Started
