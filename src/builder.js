@@ -25,7 +25,7 @@ export default function build(opts) {
   ['hover', 'focus', 'active'].forEach(state => {
     Object.keys(combinedRules).forEach(label => {
       combinedRules[`${state}-${label}`] = {
-        $state: state,
+        $state: `:${state}`,
         rule: combinedRules[label]
       }
     })
@@ -34,7 +34,7 @@ export default function build(opts) {
   Object.keys(mediaQueries).forEach(mediaLabel => {
     Object.keys(combinedRules).forEach(label => {
       combinedRules[`${label}-${mediaLabel}`] = {
-        $media: mediaQueries[mediaLabel],
+        $media: `@media ${mediaQueries[mediaLabel]}`,
         rule: combinedRules[label]
       }
     })
