@@ -1,4 +1,5 @@
 import ruleBuilder from './rules'
+import componentBuilder from './components'
 
 export default function build(opts) {
   if (__DEV__ ) {
@@ -39,6 +40,11 @@ export default function build(opts) {
     })
   })
 
-  return combinedRules
+  const B = componentBuilder(combinedRules)
 
+  // expose colors and options for the greater good
+  B.col = opts.colors
+  B.opts = opts
+  
+  return B
 }
