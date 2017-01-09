@@ -1,6 +1,6 @@
 {
   "name": "retachyons",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Type less, style more",
   "scripts": {
     "start": "echo 'Make sure to `cd samples && yarn install`' && cd samples && npm run dev",
