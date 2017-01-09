@@ -96,5 +96,10 @@ export default {
     3: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
     4: '2px 2px 8px 0px rgba( 0, 0, 0, 0.2 )',
     5: '4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
+  },
+  mediaQueries: {
+    ns: 'screen and (min-width: 30em)',
+    md: 'screen and (min-width: 30em) and (max-width: 60em)',
+    lg: 'screen and (min-width: 60em)'
   }
 }

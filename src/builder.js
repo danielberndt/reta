@@ -18,7 +18,7 @@ export default function build(opts) {
   const combinedRules = {}
   Object.keys(rules).forEach(ruleName => {
     const ruleDefinitions = rules[ruleName]
-    Object.forEach(ruleDefinitions).forEach(label => {
+    Object.keys(ruleDefinitions).forEach(label => {
       combinedRules[label] = ruleDefinitions[label]
     })
   });
@@ -45,6 +45,6 @@ export default function build(opts) {
   // expose colors and options for the greater good
   B.col = opts.colors
   B.opts = opts
-  
+
   return B
 }

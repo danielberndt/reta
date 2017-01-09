@@ -6,12 +6,12 @@ const buildRuleDict = (list, keyFn, styleKeys, intoDict = {}) => {
   if (Array.isArray(list)) {
     for (let i = 0; i < list.length; i++) {
       const styleDict = Array.isArray(styleKeys)
-      ? {[styleKeys]: list[i]}
-      : styleKeys.reduce((m, s) => {m[s] = list[i]; return m}, {})
+        ? styleKeys.reduce((m, s) => {m[s] = list[i]; return m}, {})
+        : {[styleKeys]: list[i]}
       intoDict[keyFn(i)] = styleDict
     }
   } else {
-    Object.keys(list).forEach(label => intoDict[label] = {[styleKeys]: list[label]})
+    Object.keys(list).forEach(label => intoDict[keyFn(label)] = {[styleKeys]: list[label]})
   }
   return intoDict
 }
@@ -154,7 +154,7 @@ export default function buildRules(opts) {
   }
 
   rules.color = buildRuleDict(colors, i => i, 'color')
-  rules.backgroundColor = buildRuleDict(colors, i => `bg${i[0].toUpperCase()}${i.slice(1)}`, 'backgroundColor')
+  rules.backgroundColor = buildRuleDict(colors, i => `bg-${i}`, 'backgroundColor')
 
   rules.width = {
     'w-10': {width: '10%'},
