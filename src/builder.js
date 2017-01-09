@@ -21,9 +21,11 @@ export default function build(opts) {
     Object.keys(ruleDefinitions).forEach(label => {
       combinedRules[label] = ruleDefinitions[label]
     })
-  });
+  })
+
+  const ruleKeys = Object.keys(combinedRules);
   ['hover', 'focus', 'active'].forEach(state => {
-    Object.keys(combinedRules).forEach(label => {
+    ruleKeys.forEach(label => {
       combinedRules[`${state}-${label}`] = {
         $state: `:${state}`,
         rule: combinedRules[label]
@@ -31,13 +33,19 @@ export default function build(opts) {
     })
   })
 
+  const ruleKeysWithState = Object.keys(combinedRules)
   Object.keys(mediaQueries).forEach(mediaLabel => {
-    Object.keys(combinedRules).forEach(label => {
+    ruleKeysWithState.forEach(label => {
       combinedRules[`${label}-${mediaLabel}`] = {
         $media: `@media ${mediaQueries[mediaLabel]}`,
         rule: combinedRules[label]
       }
     })
+  })
+  // support camel case attrs as well
+  Object.keys(combinedRules).forEach(key => {
+    const camelCaseKey = key.split(/-+/).map((s,i) => i > 0 ? `${s[0].toUpperCase()}${s.slice(1)}` : s).join('')
+    combinedRules[camelCaseKey] = combinedRules[key]
   })
 
   const B = componentBuilder(combinedRules)
