@@ -101,5 +101,10 @@ export default {
     ns: 'screen and (min-width: 30em)',
     md: 'screen and (min-width: 30em) and (max-width: 60em)',
     lg: 'screen and (min-width: 60em)'
+  },
+  globalRules: {
+    'html, body, div, article, section, main, footer, header, form, fieldset, legend, pre, code, a, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, textarea, table, td, th, tr, input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="text"], input[type="url"], .border-box': {boxSizing: 'border-box'},
+    'img': {maxWidth: '100%'},
+    code: { fontFamily: 'Consolas, monaco, monospace'}
   }
 }

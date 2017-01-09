@@ -1,16 +1,17 @@
 import ruleBuilder from './rules'
 import componentBuilder from './components'
+import {css} from 'glamor'
 
 export default function build(opts) {
   if (__DEV__ ) {
     if (!opts) throw new Error('you need to pass options to the "build()" function!')
-    const missing = 'mediaQueries'
+    const missing = 'mediaQueries globalRules'
       .split(' ').filter(o => !opts[o])
     if (missing.length) throw new Error(`you need to pass "${missing.join(', ')}" within build options!`)
   }
   const {
     mediaQueries, // {ns: 'screen and (min-width: 30em)'}
-    // defaultRules // {'html, body...' : {boxSizing: 'border-box'}}
+    globalRules // {'html, body...' : {boxSizing: 'border-box'}}
   } = opts
 
   const rules = ruleBuilder(opts)
@@ -46,6 +47,10 @@ export default function build(opts) {
   Object.keys(combinedRules).forEach(key => {
     const camelCaseKey = key.split(/-+/).map((s,i) => i > 0 ? `${s[0].toUpperCase()}${s.slice(1)}` : s).join('')
     combinedRules[camelCaseKey] = combinedRules[key]
+  })
+
+  Object.keys(globalRules).forEach(key => {
+    css.global(key, globalRules[key])
   })
 
   const B = componentBuilder(combinedRules)
