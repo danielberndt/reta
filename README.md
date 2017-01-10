@@ -71,7 +71,7 @@ const opts = {
   },
 }
 
-export default builder(defaultOpts)
+export default builder(opts)
 ```
 
 ```jsx
