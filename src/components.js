@@ -1,5 +1,5 @@
 import React from 'react'
-import {Flex, Block, InlineBlock} from 'glamor/jsxstyle'
+import {View} from 'glamor/jsxstyle'
 import {css} from 'glamor'
 
 /* eslint-disable guard-for-in */
@@ -36,9 +36,9 @@ export default function buildComponents(rules) {
   }
   /* eslint-enable guard-for-in */
 
-  const B = (props) => <Block {...inlineTa(props)}/>
-  B.I = (props) => <InlineBlock {...inlineTa(props)}/>
-  B.Row = (props) => <Flex {...inlineTa(props)}/>
-  B.Col = (props) => <Flex flexDirection="column" {...inlineTa(props)}/>
+  const B = (props) => <View {...inlineTa({db: true, ...props})}/>
+  B.I = (props) => <View {...inlineTa({dib: true, ...props})}/>
+  B.Row = (props) => <View {...inlineTa({flex: true, ...props})}/>
+  B.Col = (props) => <View {...inlineTa({flex: true, flexColumn: true, ...props})}/>
   return B
 }
