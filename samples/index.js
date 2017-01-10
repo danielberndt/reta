@@ -8,6 +8,7 @@ class App extends React.Component {
     return (
       <B.Col minVh100 bgMoonGray bgDarkGreenNs hoverBgDarkRedNs hoverBgBlack>
         <B white90 hover={{cursor: 'pointer'}} hoverBgDarkBlue hoverYellow>hi</B>
+        <B dnNs>hide on not small</B>
       </B.Col>
     )
   }
