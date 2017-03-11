@@ -5,7 +5,7 @@ A very happy marriage between tachyons-css and react – type less, more style.
 ## Why?
 
 Styling with react tends to be quite a strain on a typical keyboard. So many special characters. And a lot of boilerplate-y code.
-Let's learn from the atomic css movement. [tachyons]((http://tachyons.io/) is a prime example of being very expressive with very little code. An experience that promises a big productivity boost once you've learned its [syntax](http://tachyons.io/docs/).
+Let's learn from the atomic css movement. [tachyons](http://tachyons.io/) is a prime example of being very expressive with very little code. An experience that promises a big productivity boost once you've learned its [syntax](http://tachyons.io/docs/).
 
 **retachyons** takes this approach even further. Rather than using _classNames_ to describe the style of your component, simply use _attributes_. Much leaner!
 
