@@ -1,15 +1,18 @@
 import React from 'react'
 import {render} from 'react-dom'
 import B from 'retachyons'
+import './index.css'
+const Col = p => <B flex flexColumn {...p}/>
 
 class App extends React.Component {
 
   render() {
     return (
-      <B.Col minVh100 bgMoonGray bgDarkGreenNs hoverBgDarkRedNs hoverBgBlack>
-        <B white90 hover={{cursor: 'pointer'}} hoverBgDarkBlue hoverYellow>hi</B>
+      <Col minVh100 bgMoonGray bgDarkGreenNs hoverBgDarkRedNs hoverBgBlack>
+        <B white90 hoverBgDarkBlue hoverYellow>hi</B>
         <B dnNs>hide on not small</B>
-      </B.Col>
+        <B dnNs={false}>do not hide on not small</B>
+      </Col>
     )
   }
 }

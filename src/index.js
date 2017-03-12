@@ -1,4 +1,6 @@
 import defaultOpts from './defaults'
-import builder from './builder'
+import rulesBuilder from './rules-builder'
+import componentBuilder from './component-builder'
 
-export default builder(defaultOpts)
+export default componentBuilder(rulesBuilder(defaultOpts))
+

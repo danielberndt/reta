@@ -2,33 +2,43 @@
 
 A very happy marriage between tachyons-css and react – type less, more style.
 
+> **Warning** this is work on progress and not used in production anywhere, tread carefully!
+
 ## Why?
 
 Styling with react tends to be quite a strain on a typical keyboard. So many special characters. And a lot of boilerplate-y code.
-Let's learn from the atomic css movement. [tachyons](http://tachyons.io/) is a prime example of being very expressive with very little code. An experience that promises a big productivity boost once you've learned its [syntax](http://tachyons.io/docs/).
+Let's learn from the atomic css movement. [tachyons](http://tachyons.io/) is a great example of how to be very expressive with very little code. An experience that promises a big productivity boost once you've learned its [syntax](http://tachyons.io/docs/).
 
-**retachyons** takes this approach even further. Rather than using _classNames_ to describe the style of your component, simply use _attributes_. Much leaner!
+**retachyons** takes this approach even further. Rather than using _classNames_ to describe the style of your component, simply use _attributes_. So much leaner in react land!
 
 ## Example code
 
+```css
+// index.css
+@import 'retachyons/loader!reachyons/defaults'
+```
+
 ```jsx
-<B.Col pa3 bgWashedBlue hoverLightBlue flexRowNs>
-  <B component="img" props={{src, alt: "media"}} w-30 mr3/>
+// component.js
+import B from retachyons
+
+const Col = props => <B flex flexColumn {...props}/>
+
+<Col pa3 bgWashedBlue hoverLightBlue flexRowNs>
+  <B component="img" src={img} alt="media" w30 mr3/>
   <B flex-auto f5 white80>{children}</B>
-</B.Col>
+</Col>
 ```
 
 ## Features
 
 - media queries via customisable suffixes: `<B pa3 pa5Md/>`
 - hover, active, focus states via prefixes: `<B blue hoverDarkBlue/>`
-- full power of [glamor](https://github.com/threepointone/glamor/blob/master/docs/jsxstyle.md) for all kinds of fallbacks: `<B w50 opacity={value} select={[' svg': {height: 12}]}/>`
-- support for [server side rendering](https://github.com/threepointone/glamor/blob/master/docs/server.md)
-- 4 Basic building blocks: `B`: block, `B.Col`: flexDirection column, `B.Row` flexDirection column, `B.I`: inline-block
-  (set your custom display prop via e.g. `<B display="inline"/>`)
+- makes it quite easy to combine it with your preferred styling approach
+- support for server side rendering
 - Overwritable defaults for colors, scales, etc
 - Support for camelCase and kebabCase: `<B bg-dark-green/>` and `<B bgDarkGreen/>`
-- Potential for very nice performance due to fixed set of atomic-rules
+- Extremely performant since all the work is done on compile time. The runtime simply sets class names on your components.
 
 ## Getting Started
 
@@ -39,11 +49,13 @@ npm i retachyons
 ```jsx
 import B from retachyons
 
+const Col = props => <B flex flexColumn {...props}/>
+
 const Media = ({img, children}) => (
-  <B.Col pa3 bgWashedBlue flexRowNs>
-    <B component="img" props={{src, alt: "media"}} w-30 mr3/>
-    <B flex-auto f5 white80>{children}</B>
-  </B.Col>
+  <Col pa3 bgWashedBlue flexRowNs>
+    <B component="img" src={img} alt="media" w30 mr3/>
+    <B flexAuto f5 white80>{children}</B>
+  </Col>
 )
 ```
 
@@ -53,7 +65,8 @@ const Media = ({img, children}) => (
 
 ```js
 import defaultOpts from 'retachyons/defaults'
-import builder from 'retachyons/builder'
+import rulesBuilder from 'retachyons/rules-builder'
+import componentBuilder from 'retachyons/component-builder'
 
 const opts = {
   ...defaultOpts,
@@ -71,7 +84,7 @@ const opts = {
   },
 }
 
-export default builder(opts)
+export default componentBuilder(rulesBuilder(opts)))
 ```
 
 ```jsx
