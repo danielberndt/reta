@@ -14,8 +14,8 @@ Let's learn from the atomic css movement. [tachyons](http://tachyons.io/) is a g
 ## Example code
 
 ```css
-// index.css
-@import 'retachyons/loader!reachyons/defaults'
+/* index.css */
+@import 'retachyons/loader!retachyons/defaults'
 ```
 
 ```jsx
@@ -24,10 +24,12 @@ import B from retachyons
 
 const Col = props => <B flex flexColumn {...props}/>
 
-<Col pa3 bgWashedBlue hoverLightBlue flexRowNs>
-  <B component="img" src={img} alt="media" w30 mr3/>
-  <B flex-auto f5 white80>{children}</B>
-</Col>
+const Media = ({img, children}) => (
+  <Col pa3 bgWashedBlue hoverLightBlue flexRowNs>
+    <B component="img" src={img} alt="media" w30 mr3/>
+    <B flex-auto f5 white80>{children}</B>
+  </Col>
+)
 ```
 
 ## Features
@@ -40,24 +42,6 @@ const Col = props => <B flex flexColumn {...props}/>
 - Support for camelCase and kebabCase: `<B bg-dark-green/>` and `<B bgDarkGreen/>`
 - Extremely performant since all the work is done on compile time. The runtime simply sets class names on your components.
 
-## Getting Started
-
-```
-npm i retachyons
-```
-
-```jsx
-import B from retachyons
-
-const Col = props => <B flex flexColumn {...props}/>
-
-const Media = ({img, children}) => (
-  <Col pa3 bgWashedBlue flexRowNs>
-    <B component="img" src={img} alt="media" w30 mr3/>
-    <B flexAuto f5 white80>{children}</B>
-  </Col>
-)
-```
 
 ## Use your custom colours or scales
 
