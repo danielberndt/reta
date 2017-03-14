@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import B from 'retachyons'
+import B from 'reta'
 import './index.css'
 const Col = p => <B flex flexColumn {...p}/>
 

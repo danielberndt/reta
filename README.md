@@ -1,4 +1,4 @@
-# retachyons
+# reta
 
 A very happy marriage between tachyons-css and react – type less, more style.
 
@@ -9,18 +9,18 @@ A very happy marriage between tachyons-css and react – type less, more style.
 Styling with react tends to be quite a strain on a typical keyboard. So many special characters. And a lot of boilerplate-y code.
 Let's learn from the atomic css movement. [tachyons](http://tachyons.io/) is a great example of how to be very expressive with very little code. An experience that promises a big productivity boost once you've learned its [syntax](http://tachyons.io/docs/).
 
-**retachyons** takes this approach even further. Rather than using _classNames_ to describe the style of your component, simply use _attributes_. So much leaner in react land!
+**reta** takes this approach even further. Rather than using _classNames_ to describe the style of your component, simply use _attributes_. So much leaner in react land!
 
 ## Example code
 
 ```css
 /* index.css */
-@import 'retachyons/loader!retachyons/defaults'
+@import 'reta/loader!reta/defaults'
 ```
 
 ```jsx
 // component.js
-import B from retachyons
+import B from reta
 
 const Col = props => <B flex flexColumn {...props}/>
 
@@ -48,9 +48,9 @@ const Media = ({img, children}) => (
 **mystyle.js**
 
 ```js
-import defaultOpts from 'retachyons/defaults'
-import rulesBuilder from 'retachyons/rules-builder'
-import componentBuilder from 'retachyons/component-builder'
+import defaultOpts from 'reta/defaults'
+import rulesBuilder from 'reta/rules-builder'
+import componentBuilder from 'reta/component-builder'
 
 const opts = {
   ...defaultOpts,

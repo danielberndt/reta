@@ -2,7 +2,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 
-const RETACHYONS_SRC = path.join(__dirname, '..', 'src')
+const RETA_SRC = path.join(__dirname, '..', 'src')
 
 module.exports = {
 
@@ -27,7 +27,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'retachyons': RETACHYONS_SRC,
+      'reta': RETA_SRC,
       'react': path.join(__dirname, 'node_modules', 'react')
     }
   },
