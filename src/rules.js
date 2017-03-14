@@ -321,5 +321,9 @@ export default function buildRules(opts) {
     'order-last': {order: '99999'},
   }
 
+  rules.cursor = {
+    pointer: {cursor: 'pointer'}
+  }
+
   return rules
 }
