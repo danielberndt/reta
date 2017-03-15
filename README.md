@@ -15,7 +15,7 @@ Let's learn from the atomic css movement. [tachyons](http://tachyons.io/) is a g
 
 ```css
 /* index.css */
-@import 'reta/loader!reta/defaults'
+@import '~reta/loader!reta/defaults'
 ```
 
 ```jsx

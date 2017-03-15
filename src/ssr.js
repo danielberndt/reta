@@ -4,7 +4,7 @@ import generateCss from './generate-css'
 export default function(buildRules, actionCb) {
   const usedRules = {}
   setEmitRule(rule => usedRules[rule] = true)
-  actionCb()
+  const html = actionCb()
   setEmitRule(null)
-  return generateCss(buildRules, {whiteList: usedRules})
+  return {html, css: generateCss(buildRules, {whiteList: usedRules})}
 }

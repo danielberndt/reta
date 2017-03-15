@@ -1,7 +1,8 @@
-import rulesBuilder from './builder'
+import rulesBuilder from './rules-builder'
 import generateCss from './generate-css'
 
-export default function(content) {
+module.exports = function(content) {
+  this.cacheable()
   let configCode = this.exec(content, this.resourcePath)
   const orderedRules = rulesBuilder(configCode.__esModule ? configCode.default : configCode)
   return generateCss(orderedRules)
