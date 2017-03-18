@@ -1,4 +1,5 @@
 import React from 'react'
+const styletronUtils = require('styletron-utils')
 
 let emitRule
 
@@ -16,7 +17,16 @@ export default function buildComponent(combinedRules) {
     labelsToClassNames[camelCaseKey] = label
   })
 
-  return props => {
+  const customCssForMediaQueries = Object.keys(combinedRules.mediaQueries).reduce(
+    (m, label) => {
+      m[`css${label}`] = combinedRules.mediaQueries[label]
+      m[`css${label[0].toUpperCase()}${label.slice(1)}`] = combinedRules.mediaQueries[label]
+      return m
+    },
+    {}
+  )
+
+  const B = (props, ctx) => {
     let Comp = 'div'
     const newProps = props.props || {}
     let classNames = (props.className && [props.className]) || []
@@ -25,21 +35,30 @@ export default function buildComponent(combinedRules) {
       if (ruleLabel) {
         if (props[prop]) {
           classNames.push(ruleLabel)
-          if (emitRule) emitRule()
+          if (emitRule) emitRule(ruleLabel)
         }
       } else {
         switch (prop) {
           case 'className':
           case 'props':
             break
+          case 'css':
+            classNames.push(styletronUtils.injectStylePrefixed(ctx.styletron, props[prop]))
+            break
           case 'component':
             Comp = props[prop]
             break
           default:
-            newProps[prop] = props[prop]
+            if (customCssForMediaQueries[prop]) {
+              classNames.push(styletronUtils.injectStylePrefixed(ctx.styletron, props[prop], customCssForMediaQueries[prop]))
+            } else {
+              newProps[prop] = props[prop]
+            }
         }
       }
     }
     return <Comp className={classNames.join(' ')} {...newProps}/>
-  }  
+  }
+  B.contextTypes = {styletron: React.PropTypes.object}
+  return B
 }

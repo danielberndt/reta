@@ -57,5 +57,7 @@ export default function build(opts) {
     })
   })
 
+  combinedRules.mediaQueries = mediaQueries
+
   return combinedRules
 }

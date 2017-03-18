@@ -34,5 +34,9 @@
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "styletron-client": "^2.5.1",
+    "styletron-server": "^2.5.1",
+    "styletron-utils": "^2.5.1"
+  }
 }
