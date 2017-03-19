@@ -224,25 +224,28 @@ export default function buildRules(opts) {
   }
 
   rules.borders = {
-    ba: {'border-style': 'solid', 'border-width': 1 },
-    bt: {'border-top-style': 'solid', 'border-top-width': 1 },
-    br: {'border-right-style': 'solid', 'border-right-width': 1 },
-    bb: {'border-bottom-style': 'solid', 'border-bottom-width': 1 },
-    bl: {'border-left-style': 'solid', 'border-left-width': 1 },
+    ba: {'border-style': 'solid', 'border-width': '1px' },
+    bt: {'border-top-style': 'solid', 'border-top-width': '1px' },
+    br: {'border-right-style': 'solid', 'border-right-width': '1px' },
+    bb: {'border-bottom-style': 'solid', 'border-bottom-width': '1px' },
+    bl: {'border-left-style': 'solid', 'border-left-width': '1px' },
     bn: {'border-style': 'none', 'border-width': 0 },
-
-    'bt-0': {'border-top-width': 0 },
-    'br-0': {'border-right-width': 0 },
-    'bb-0': {'border-bottom-width': 0 },
-    'bl-0': {'border-left-width': 0 },
 
     'b--dotted': {'border-style': 'dotted'},
     'b--dashed': {'border-style': 'dashed'},
     'b--solid': {'border-style': 'solid'},
-    'b--none': {'border-style': 'none'}
+    'b--none': {'border-style': 'none'},
   }
-  buildRuleDict(borderWidthScale, i => `bw${i}`, 'border-width', rules.borders)
   buildRuleDict(colors, i => `b--${i}`, 'border-color', rules.borders)
+  buildRuleDict(borderWidthScale, i => `bw${i}`, 'border-width', rules.borders)
+
+  rules.borders = {
+    ...rules.borders,
+    'bt-0': {'border-top-width': 0 },
+    'br-0': {'border-right-width': 0 },
+    'bb-0': {'border-bottom-width': 0 },
+    'bl-0': {'border-left-width': 0 },
+  }
 
   rules.borderRadius = {
     'br-100': {'border-radius': '100%'},
